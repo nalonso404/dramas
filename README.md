@@ -1,4 +1,4 @@
-# words
+# dramas
 
 ## Description
 
@@ -12,12 +12,13 @@ Finalmente el usuario se enfrentará a una batalla con el animal de otro usuario
 home pública, sign up y login
 Sign up, formulario para creación de usuario
 Log in, find de DB
-perfil de User, Información de perfil del User
+User/:id, Información de perfil del User
 User/:id/edit, Edición de la información del perfil
-animal/:id/create,  Creación de animal
+animal/create,  Creación de animal
 animal/:id/edit,  Edicion del animal
+animal/:id/delete, borrar animal
 home privada, Home visible para usuarios logrados
-game/:id,  Interacción con el juego
+game/:id, Interacción con el juego
 game/:id/winner, pagina resultado
 game/:id/loser , pagina resultado
 
@@ -26,20 +27,12 @@ Usuario
 Animal
 Pregunta
 
-
 ## Backlog
 Añadir otro tipo de animal
 Añadir preguntas
 Añadir comportamiento del animal
 Y muy futuro, dependiendo de las victorias y derrotas subida de experiencia del anima
 Modelo Game
-
-## Data structure
-Classes and methods definition.
-
-
-## States y States Transitions
-Definition of the different states and their transition (transition functions)
 
 
 

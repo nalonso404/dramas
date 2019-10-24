@@ -6,12 +6,13 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/site-routes');
+const animalRouter = require('./routes/animal');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/database-name', {
+mongoose.connect('mongodb://localhost/dramas-project', {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
@@ -44,23 +45,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', authRouter);
 app.use('/users', usersRouter);
+app.use('/animal', animalRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+
+/// -- 404 and error handler
+
+// NOTE: requires a views/not-found.ejs template
+app.use((req, res, next) => {
+  res.status(404);
+  res.render('not-found');
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// NOTE: requires a views/error.ejs template
+app.use((err, req, res, next) => {
+  // always log the error
+  console.error('ERROR', req.method, req.path, err);
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  // only render if the error ocurred before sending the response
+  if (!res.headersSent) {
+    res.status(500);
+    res.render('error');
+  }
 });
 
 module.exports = app;
