@@ -70,7 +70,7 @@ router.post('/edit', async(req,res,next)=>{
   console.log(animalUpdated);
   res.redirect("/users/profile");
 })
-
+//no va  el delete!!!!!!!!!!!!!!!!!!!!!
 router.post('/delete', (req,res,next)=>{
   const animalId =req.session.currentUser.animal;
   Animal.findByIdAndDelete(animalId)
