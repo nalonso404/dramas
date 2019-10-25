@@ -37,7 +37,7 @@ router.get('/edit', (req,res,next)=>{
   })
 })
 
-router.post('/edit', (req,res,next)=>{
+router.post('/edit', async(req,res,next)=>{
   console.log('holaaaa')
   const userId=req.session.currentUser._id;
   const {name,mail} = req.body;
