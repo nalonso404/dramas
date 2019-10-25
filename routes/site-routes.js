@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
  
+const User = require("../models/User");
+
 //renderiz ala plantilla home.hbs
 router.get("/", (req, res, next) => {
   res.render("home");
@@ -21,8 +23,28 @@ router.use((req, res, next) => {
 // session de currentUser
    
 router.get("/profile", (req, res, next) => {
-  const {username} = req.session.currentUser
-  res.render("profile", {username});
+  const user = req.session.currentUser.name;
+  res.render("profile", {user});
 });
+//aqui no sesta renderitzant el nom de cada user perque?????
+
+
+router.get('/edit', (req,res,next)=>{
+  const userId =req.session.currentUser._id;
+   User.findById(userId)
+  .then((user)=>{
+    res.render('auth/edituser',{user}) 
+  })
+})
+
+router.post('/edit', (req,res,next)=>{
+  console.log('holaaaa')
+  const userId=req.session.currentUser._id;
+  const {name,mail} = req.body;
+  const userUpdated = await User.findOneAndUpdate({_id:userId}, {$set:{name,mail}}, {new:true})
+  console.log(userUpdated)
+  // res.redirect("/profile");
+ 
+}) 
 
 module.exports = router;

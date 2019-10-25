@@ -61,10 +61,9 @@ router.get('/edit', (req,res,next)=>{
   }) 
 
 })/
-
+//al edit els types i attitude ara son null enlloc dels defaults
 router.post('/edit', async(req,res,next)=>{
   const animalId =req.session.currentUser.animal;
-
   const {name,type,phrase,attitude} = req.body;
   const animalUpdated = await Animal.findOneAndUpdate({_id: animalId}, { $set: {name, type, phrase, attitude }}, {new:true})
   console.log(animalUpdated);

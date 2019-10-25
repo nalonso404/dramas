@@ -1,0 +1,16 @@
+<form id="form" action="/edit" method="POST">
+
+    <label for="name">name</label>
+    <input type="text" value="{{user.name}}"name="name" placeholder="Your username">
+ 
+     <label for="mail">e-mail</label>
+    <input type="mail" value="{{user.mail}}" name="mail" placeholder="Your email">
+
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="********" disabled>
+
+    <label for="repeatpassword">Repeat Password</label>
+    <input type="password" name="repeatpassword" placeholder="********"disabled>
+
+    <button type="submit">Edit Your account </button>
+</form>
