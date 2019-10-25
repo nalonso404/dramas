@@ -1,1 +1,21 @@
 <h1>Create your animal! bla bla bla</h1>
+
+<form action="/animal/create" method="POST" id="form2">
+    <h2>Create your animal</h2>
+
+    <label for="name">Name</label>
+    <input type="text" name="name" >
+
+     <label for="type">Type</label>
+    <input type="text" name="type" disabled >
+
+     <label for="phrase">Introduce your phrase</label>
+    <input type="text" name="phrase">
+
+     <label for="attitude">Attitude</label>
+    <input type="text" name="attitude" disabled> {{#if errorMessage }}
+    <div class="error-message">{{ errorMessage }}</div>
+    {{/if}}
+
+    <button>CREATE ANIMAL</button>
+</form>

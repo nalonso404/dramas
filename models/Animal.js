@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const animalSchema = new Schema({
-  user: [{type: Schema.Types.ObjectId, ref: 'User'}],
-  name: {type:String, required:true},
-  animal: {type:String, required:true, default:"llama"},
+  user: {type: Schema.Types.ObjectId, ref: 'User'},
+  name: {type:String, required:true, unique:true},
+  type: {type:String, default:"llama"},
   phrase: {type:String, required:true},
-  attitude: {type:String, required:true, default:"agressive"},
+  attitude: {type:String, default:"agressive"},
   attack: {type: Number, default:100},
   life: {type: Number, default:100}
 }, {

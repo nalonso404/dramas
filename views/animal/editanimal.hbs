@@ -1,0 +1,17 @@
+<form action="/animal/edit" method="POST" id="form3">
+    <h2>Create your animal</h2>
+   
+    <label for="name">Name</label>
+    <input type="text" value="{{animal.name}}" name="name" >
+
+     <label for="type">Type</label>
+    <input type="text" name="type" disabled >
+
+     <label for="phrase">Introduce your phrase</label>
+    <input type="text" value="{{animal.phrase}}"name="phrase">
+
+     <label for="attitude">Attitude</label>
+    <input type="text" name="attitude" disabled>
+
+    <button>EDIT YOUR ANIMAL</button>
+</form>

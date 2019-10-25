@@ -39,14 +39,13 @@ router.post('/signup', function(req,res,next){
   
         const salt = bcrypt.genSaltSync(bcryptSalt);
         const hashPass = bcrypt.hashSync(password, salt);
-  
         User.create({
           name,
           mail,
-          password: hashPass
+          password: hashPass, 
         })
           .then(() => {
-            res.redirect("/profile");
+            res.redirect("/users/profile");
           })
           .catch(error => {
             console.log(error);
