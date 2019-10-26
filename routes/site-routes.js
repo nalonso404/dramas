@@ -23,20 +23,17 @@ router.use((req, res, next) => {
 // renderizamos la plantilla secret.hbs con el username , deconstruimos en la variable username el username de request
 // session de currentUser
    
- router.get("/profile", (req, res, next) => {
-  const user = req.session.currentUser;
-  res.render("profile", {user});
-});
- /* 
+
 router.get('/profile', (req,res,next)=>{
   const user = req.session.currentUser;
-  const animalId= user.animal;
+  const animalId=user.animal;
   Animal.findById(animalId)
   .then((animal)=>{
-    res.render("profile", {user}, {animal})
+    res.render("profile", {user,animal})
   })
-}) */
-//aqui no sesta renderitzant el nom de cada user perque?????
+ 
+}) 
+
 
 
 router.get('/edit', (req,res,next)=>{
