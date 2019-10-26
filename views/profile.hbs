@@ -1,13 +1,28 @@
+<body id="cuatro">
 <div id="container">
-    <h2>Hello {{user.name}}!!</h2>
+    <h1>Hello {{user.name}}!!</h2>
+    <div class="profile">
+    <img src="/images/llama.png" class="profile-img">
+    <div class="details">
+        <p>{{user.name}}</p>
+         <p>{{user.mail}}</p> 
+    </div>
+     <button class="btn-edit-profile">
+        <a href="/users/edit">EDIT</a>
+     </button>
+    </div>
+    
+ <h2 class="animal"> YOUR ANIMAL</h2>
+   {{animal}}
+ <div class="butons-animal">
+     <a href="/animal/create">CREATE YOUR ANIMAL</a>
+    <a href="/animal/edit">EDIT YOUR ANIMAL</a>
+    <button type="submit">DELETE YOUR ANIMAL</button>
+ </div>
+   
 </div>
-<a href="/animal/create">CREATE YOUR ANIMAL</a>
-<a href="/animal/edit">EDIT YOUR ANIMAL</a>
-<button type="submit">DELETE YOUR ANIMAL</button>
-<a href="/users/edit">EDIT YOUR Profile</a>
+
 <a href="/logout">Logout</a>
 
-<p>Your animal</p>
-{{animal}}
-<p>{{user.name}}</p>
-<p>{{user.mail}}</p> 
+
+</body>

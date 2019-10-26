@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
- 
+
+const Animal = require("../models/Animal");
 const User = require("../models/User");
 
 //renderiz ala plantilla home.hbs
@@ -22,10 +23,19 @@ router.use((req, res, next) => {
 // renderizamos la plantilla secret.hbs con el username , deconstruimos en la variable username el username de request
 // session de currentUser
    
-router.get("/profile", (req, res, next) => {
+ router.get("/profile", (req, res, next) => {
   const user = req.session.currentUser;
   res.render("profile", {user});
 });
+ /* 
+router.get('/profile', (req,res,next)=>{
+  const user = req.session.currentUser;
+  const animalId= user.animal;
+  Animal.findById(animalId)
+  .then((animal)=>{
+    res.render("profile", {user}, {animal})
+  })
+}) */
 //aqui no sesta renderitzant el nom de cada user perque?????
 
 

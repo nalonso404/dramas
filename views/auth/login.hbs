@@ -1,6 +1,7 @@
-<form action="/login" method="POST" id="form">
-    <h2>Login</h2>
-
+<body id="tres">
+    <h1 class="login">LOG IN</h1>
+<div class="form-wrapper">
+     <form action="/login" method="POST" id="form">
     <label for="name">Name</label>
     <input type="text" name="name">
 
@@ -9,8 +10,15 @@
     <div class="error-message">{{ errorMessage }}</div>
     {{/if}}
 
-    <button>LOG IN</button>
+    <button class="btn3">LOG IN</button>
 
-    <p class="account-message"> Don't have an account? <a href="/signup">Sign up</a>
+    <p class="account-message"> Don't have an account? <a class="redirect"href="/signup">Sign up</a>
     </p>
 </form>
+
+
+    </div>
+
+
+</body>
+
