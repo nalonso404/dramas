@@ -44,17 +44,18 @@ router.get('/edit', (req,res,next)=>{
   })
 })
 
-router.post('/edit', async(req,res,next)=>{
+
+router.post('/edit', (req,res,next)=>{
   const userId=req.session.currentUser._id;
-  const {name,mail} = req.body;
-  await User.findOneAndUpdate(userId,{
-    name,
-    mail
+  const {name,mail}= req.body;
+  User.findByIdAndUpdate({_id:userId}, { $set:{name,mail}}, {new:true})
+  .then((user)=>{
+    res.redirect("/users/profile")
   })
-  const userUpdate = await User.findById(userId);
-  req.session.currentUser=userUpdate;
-  return res.redirect("/users/profile");
- 
-}) 
+  .catch ((error)=>{
+    console.log(error)
+  })
+})
+
 
 module.exports = router;
