@@ -60,7 +60,8 @@ router.get('/edit', (req,res,next)=>{
     res.render('animal/editanimal', {animal})
   }) 
 
-})/
+})
+
 //al edit els types i attitude ara son null enlloc dels defaults
 router.post('/edit', async(req,res,next)=>{
   const animalId =req.session.currentUser.animal;
@@ -69,8 +70,17 @@ router.post('/edit', async(req,res,next)=>{
   console.log(animalUpdated);
   res.redirect("/users/profile");
 })
+
 //no va  el delete!!!!!!!!!!!!!!!!!!!!!
-router.post('/delete', (req,res,next)=>{
+//no va  el delete!!!!!!!!!!!!!!!!!!!!!
+
+router.post('/delete', async(req,res,next)=>{
+  const animalId =req.session.currentUser.animal;
+  await Animal.deleteOne({_id:animalId});
+  return res.redirect('/users/profile')
+})
+
+/* router.post('/delete', (req,res,next)=>{
   const animalId =req.session.currentUser.animal;
   Animal.findByIdAndDelete(animalId)
   .then((animal)=>{
@@ -79,7 +89,7 @@ router.post('/delete', (req,res,next)=>{
   .catch((error)=>{
     console.log(error);
   })
-})
+}) */
  
 
 module.exports = router;

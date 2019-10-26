@@ -13,6 +13,7 @@ const hbs = require("hbs");
 const hbsutils = require("hbs-utils")(hbs);
 const flash = require("connect-flash");
 
+const indexRouter = require("./routes/index");
 const authRouter = require('./routes/auth');
 const usersRouter = require('./routes/site-routes');
 const animalRouter = require('./routes/animal');
@@ -52,6 +53,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/index", indexRouter);
 app.use('/', authRouter);
 app.use('/users', usersRouter);
 app.use('/animal', animalRouter);

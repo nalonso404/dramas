@@ -1,19 +1,32 @@
-<form id="form" action="/signup" method="POST">
-    <label for="name">name</label>
+<body id="dos">
+  <h1 class="signup">SIGN UP</h1>
+  <div class="form-wrapper">
+    <form id="form" action="/signup" method="POST">
+    <label for="name">NAME</label>
     <input type="text" name="name" placeholder="Your username">
  
-     <label for="mail">e-mail</label>
+     <label for="mail">EMAIL</label>
     <input type="email" name="mail" placeholder="Your email">
 
-    <label for="password">Password</label>
+    <label for="password">PASSWORD</label>
     <input type="password" name="password" placeholder="********">
 
-    <label for="repeatpassword">Repeat Password</label>
+    <label for="repeatpassword">REPEAT PASSWORD</label>
     <input type="password" name="repeatpassword" placeholder="********">
 
-    <button type="submit">Create account </button>
-</form>
-
-{{#if errorMessage}}
+    <button class="btn2"type="submit">Create account </button>
+    {{#if errorMessage}}
   <div class="error-message">{{ errorMessage }}</div>
 {{/if}}
+</form>
+
+
+
+
+
+  </div>
+
+
+</body>
+
+

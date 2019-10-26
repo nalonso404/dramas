@@ -23,7 +23,7 @@ router.use((req, res, next) => {
 // session de currentUser
    
 router.get("/profile", (req, res, next) => {
-  const user = req.session.currentUser.name;
+  const user = req.session.currentUser;
   res.render("profile", {user});
 });
 //aqui no sesta renderitzant el nom de cada user perque?????
@@ -38,12 +38,15 @@ router.get('/edit', (req,res,next)=>{
 })
 
 router.post('/edit', async(req,res,next)=>{
-  console.log('holaaaa')
   const userId=req.session.currentUser._id;
   const {name,mail} = req.body;
-  const userUpdated = await User.findOneAndUpdate({_id:userId}, {$set:{name,mail}}, {new:true})
-  console.log(userUpdated)
-  // res.redirect("/profile");
+  await User.findOneAndUpdate(userId,{
+    name,
+    mail
+  })
+  const userUpdate = await User.findById(userId);
+  req.session.currentUser=userUpdate;
+  return res.redirect("/users/profile");
  
 }) 
 
