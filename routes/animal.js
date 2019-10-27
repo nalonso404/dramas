@@ -42,7 +42,6 @@ router.post('/create', async function(req,res,next){
       attitude
     })
 
-    //const userUpdated = await User.findOne({'_id':user})
     const userUpdated = await User.findOneAndUpdate({'_id':user}, {animal: createdAnimal._id},{new:true})
     console.log(userUpdated);
     res.redirect("/users/profile");
@@ -62,7 +61,6 @@ router.get('/edit', (req,res,next)=>{
 
 })
 
-//al edit els types i attitude ara son null enlloc dels defaults
 router.post('/edit', async(req,res,next)=>{
   const animalId =req.session.currentUser.animal;
   const {name,type,phrase,attitude} = req.body;
@@ -71,25 +69,11 @@ router.post('/edit', async(req,res,next)=>{
   res.redirect("/users/profile");
 })
 
-//no va  el delete!!!!!!!!!!!!!!!!!!!!!
-//no va  el delete!!!!!!!!!!!!!!!!!!!!!
 
-router.post('/delete', async(req,res,next)=>{
-  const animalId =req.session.currentUser.animal;
+router.post('/delete/:id', async(req,res,next)=>{
+  const animalId=req.params.id
   await Animal.deleteOne({_id:animalId});
   return res.redirect('/users/profile')
 })
-
-/* router.post('/delete', (req,res,next)=>{
-  const animalId =req.session.currentUser.animal;
-  Animal.findByIdAndDelete(animalId)
-  .then((animal)=>{
-    res.redirect("/users/profile");
-  })
-  .catch((error)=>{
-    console.log(error);
-  })
-}) */
- 
 
 module.exports = router;
