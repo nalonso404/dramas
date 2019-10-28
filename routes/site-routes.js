@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Animal = require("../models/Animal");
 const User = require("../models/User");
+const Pregunta = require('../models/Pregunta')
 
 //renderiz ala plantilla home.hbs
 router.get("/", (req, res, next) => {
@@ -23,18 +24,27 @@ router.use((req, res, next) => {
 // renderizamos la plantilla secret.hbs con el username , deconstruimos en la variable username el username de request
 // session de currentUser
    
-
-router.get('/profile', (req,res,next)=>{
+ router.get('/secret', (req,res,next)=>{
+   res.render('secret')
+ })
+router.get('/profile', async (req,res,next)=>{
   const user = req.session.currentUser;
-  const animalId=user.animal;
+  //const animalId=user.animal;
+  // populate
+  const userWithAnimal = await User.findOne({'_id':user._id}).populate('animal');
+ /*
   Animal.findById(animalId)
   .then((animal)=>{
     res.render("profile", {user,animal})
   })
- 
+ */
+console.log(userWithAnimal)
+res.render("profile", userWithAnimal)
 }) 
 
-
+/*router.get('/game', (req,res,next)=>{
+  res.render('game')
+})*/
 
 router.get('/edit', (req,res,next)=>{
   const userId =req.session.currentUser._id;
@@ -56,6 +66,45 @@ router.post('/edit', (req,res,next)=>{
     console.log(error)
   })
 })
+
+router.get('/game', async (req, res, next) => {
+  const user = req.session.currentUser;
+  const userWithAnimal = await User.findOne({'_id':user._id}).populate('animal');
+  const enemyWithAnimal = await User.findOne({'_id':{$ne: user._id }}).populate('animal');
+  const pregunta = await Pregunta.find()
+  console.log(pregunta)
+  const {question, answer1, answer2} = pregunta[0]
+  const arrAnswer = [answer1, answer2].sort()
+  const data = {
+    user:userWithAnimal,
+    enemy:enemyWithAnimal,
+    pregunta: question,
+    answer1: arrAnswer[0],
+    answer2: arrAnswer[1]
+  }
+  console.log(data)
+
+  res.render('game', data)
+  })
+
+  router.get('/winner', (req,res,next) => {
+    res.render('winner')
+  })
+  router.get('/loser', (req,res,next) => {
+    res.render('loser')
+  })
+  
+  router.post('/game/:className', async (req, res, next) => {
+    const {className} = req.params
+    console.log(className)
+    if(className.class === 'respuesta-correcta'){
+      res.redirect('/users/winner')
+    }else{
+      res.redirect('/users/loser')
+    }
+  })
+
+
 
 
 module.exports = router;

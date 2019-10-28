@@ -1,11 +1,13 @@
 <body id="cuatro">
 <div id="container">
-    <h1>Hello {{user.name}}!!</h2>
+    <h1>Hello {{name}}!!</h2>
     <div class="profile">
-    <img src="/images/llama.png" class="profile-img">
+    <img src={{image}} class="profile-img">
     <div class="details">
-        <p>{{user.name}}</p>
-         <p>{{user.mail}}</p> 
+      
+        <p>{{name}}</p>
+         <p>{{mail}}</p> 
+
     </div>
      <button class="btn-edit-profile">
         <a href="/users/edit">EDIT</a>
@@ -29,6 +31,7 @@
  </div>
    
 </div>
+<a href="/users/secret"> BACK TO HOME</a>
 
 <a href="/logout">Logout</a>
 

@@ -9,10 +9,18 @@ const bcryptSalt = 10;
 
 /* GET users listing. */
 router.get('/signup', function(req, res, next) {
+
+  if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
+    res.redirect("/users/secret"); 
+  }  
+
   res.render('auth/signup');
 });
 
 router.post('/signup', function(req,res,next){
+  
+                                
+  
     const { name, mail, password } = req.body;
     console.log(name,mail,password)
     const salt = bcrypt.genSaltSync(bcryptSalt);
@@ -58,6 +66,11 @@ router.post('/signup', function(req,res,next){
 
 
   router.get('/login', function(req, res, next) {
+
+    if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
+    res.redirect("/users/secret"); 
+  }  
+
     res.render('auth/login');
   });
 
@@ -93,7 +106,7 @@ router.post('/signup', function(req,res,next){
               // Save the login in the session!
               //the request object has a property called session where we can add the values we want to store on it. In this case, we are setting it up with the user’s information.
               req.session.currentUser = user;
-              res.redirect("/users/profile");
+              res.redirect("/users/secret");
           } else {
               res.render("auth/login", {
                   errorMessage: "Incorrect password"

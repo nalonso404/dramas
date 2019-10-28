@@ -41,9 +41,12 @@ router.post('/create', async function(req,res,next){
       phrase,
       attitude
     })
-
     const userUpdated = await User.findOneAndUpdate({'_id':user}, {animal: createdAnimal._id},{new:true})
     console.log(userUpdated);
+
+    // actualizamos la sesión
+    req.session.currentUser = userUpdated
+
     res.redirect("/users/profile");
   }
   catch(error){
