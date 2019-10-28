@@ -32,15 +32,8 @@ router.use((req, res, next) => {
  })
 router.get('/profile', async (req,res,next)=>{
   const user = req.session.currentUser;
-  //const animalId=user.animal;
-  // populate
   const userWithAnimal = await User.findOne({'_id':user._id}).populate('animal');
- /*
-  Animal.findById(animalId)
-  .then((animal)=>{
-    res.render("profile", {user,animal})
-  })
- */
+
 console.log(userWithAnimal)
 res.render("profile", userWithAnimal)
 }) 
@@ -56,6 +49,25 @@ router.get('/edit', (req,res,next)=>{
     res.render('auth/edituser',{user}) 
   })
 })
+
+
+router.post('/edit', async(req,res,next)=>{
+  const userId =req.session.currentUser._id;
+  const {name,mail} = req.body;
+  const userUpdated = await User.findOneAndUpdate({_id: userId}, { $set: {name, mail}}, {new:true})
+  console.log(userUpdated);
+  res.redirect("/users/profile");
+})
+/* 
+router.post('/edit', async (req,res,next)=>{
+  const userId=req.session.currentUser._id;
+  const {name,mail}= req.body;
+  User.findByIdAndUpdate({_id:userId}, { $set:{name,mail}}, {new:true})
+  const user= await User.findById(userId);
+  req.session.currentUser=user
+    return res.redirect("/users/profile")
+  }) */
+
 
 
 /* router.post('/edit',uploadCloud.single("photo"), (req,res,next)=>{

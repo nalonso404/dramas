@@ -11,11 +11,11 @@ function pregunta (event){
             console.log(elementClasses)
             if(elementClasses[0] === 'respuesta-correcta'){
                 console.log("win")
-                await axios.post('/users/winner');
+                //await axios.post('/users/winner');
                 window.location.href = '/users/winner';
             }else {
                 console.log("loseeeer")
-                await axios.post('/users/loser');
+                //await axios.post('/users/loser');
                 window.location.href = '/users/loser';
             }
         })

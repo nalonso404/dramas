@@ -6,34 +6,57 @@
     <div class="details">
       
         <p>{{name}}</p>
-         <p>{{mail}}</p> 
+       <p>{{mail}}</p> 
 
-    </div>
-     <button class="btn-edit-profile">
-        <a href="/users/edit">EDIT</a>
-     </button>
     </div>
     
- <h2 class="animal"> YOUR ANIMAL</h2>
-   <p>{{animal.name}}</p>
-   <p>{{animal.phrase}}</p>
-   <p>{{animal.type}}</p>
-   <p>{{animal.attitude}}</p>
-   <p>{{animal.life}}</p>
-   <p>{{animal.attack}}</p>
+        <a href="/users/edit"class="home-btn">EDIT</a>
+     
+   <div class="form-wrapper">
+      
+      <h2 class="animal"> YOUR ANIMAL</h2>
 
- <div class="butons-animal">
-     <a href="/animal/create">CREATE YOUR ANIMAL</a>
-    <a href="/animal/edit">EDIT YOUR ANIMAL</a>
-   <form action="/animal/delete/{{animal._id}}" method="POST">
-    <button type="submit">DELETE YOUR ANIMAL</button>
+       <div class="butons-animal">
+             
+   <a href="/animal/create"class="home-btn">CREATE </a>
+    <a href="/animal/edit"class="home-btn">EDIT</a>
+    </div>
+
+   <div class="totdelete">
+       <form action="/animal/delete/{{animal._id}}" method="POST"class="dlt">
+    <button class ="animal-delete-btn"type="submit">DELETE</button>
     </form>
- </div>
+      <div class="gracia"><p>Are you sure you want to delete your animal? <br>
+   <em>if you are testing CRUD, GO AHEAD</em>
+   </p></div>
+     
+   </div>
+   
+ 
+      <label for="name">Name</label>
+      <input type="text" name="name" value="{{animal.name}}">
+      <label for="phrase">Phrase</label>
+      <input type="text" name="phrase" value="{{animal.phrase}}">
+      <label for="type">Type</label>
+      <input type="text" name="type" value="{{animal.type}}">
+      <label for="attitude">Attitude</label>
+      <input type="text" name="attitude" value="{{animal.attitude}}">
+      <label for="life">Life</label>
+      <input type="text" name="life" value="{{animal.life}}">
+      <label for="attack">Attack</label>
+      <input type="text" name="attack" value="{{animal.attack}}">
+   </div>    
+ 
+
+
    
 </div>
-<a href="/users/secret"> BACK TO HOME</a>
+<div class="navegadores">
+<a href="/users/secret" class="home-btn"> HOME</a>
+<a href="/logout"class="home-btn">LOGOUT</a>
 
-<a href="/logout">Logout</a>
+</div>
+
 
 
 </body>
