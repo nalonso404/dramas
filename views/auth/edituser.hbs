@@ -1,4 +1,9 @@
-<form id="form" action="/users/edit" method="POST">
+
+<form id="form" action="/users/edit" method="POST" enctype="multipart/form-data">
+ <label for="image">
+            <img src="{{user.image}}">
+            <input style="display:none;" onchange="this.form.submit()" type="file" name="image">
+        </label>
 
     <label for="name">name</label>
     <input type="text" value="{{user.name}}"name="name" placeholder="Your username">

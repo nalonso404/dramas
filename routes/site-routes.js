@@ -5,6 +5,9 @@ const Animal = require("../models/Animal");
 const User = require("../models/User");
 const Pregunta = require('../models/Pregunta')
 
+const uploadCloud = require("../config/cloudinary.js");
+
+
 //renderiz ala plantilla home.hbs
 router.get("/", (req, res, next) => {
   res.render("home");
@@ -55,10 +58,13 @@ router.get('/edit', (req,res,next)=>{
 })
 
 
-router.post('/edit', (req,res,next)=>{
+/* router.post('/edit',uploadCloud.single("photo"), (req,res,next)=>{
   const userId=req.session.currentUser._id;
-  const {name,mail}= req.body;
-  User.findByIdAndUpdate({_id:userId}, { $set:{name,mail}}, {new:true})
+  const {name,mail,image}= req.body;
+  const imgPath = req.file.url;
+  const imgName = req.file.originalname;
+  User.findByIdAndUpdate({_id:userId}, { $set:{name,mail,image}}, {new:true})
+  console.log()
   .then((user)=>{
     res.redirect("/users/profile")
   })
@@ -66,6 +72,8 @@ router.post('/edit', (req,res,next)=>{
     console.log(error)
   })
 })
+ */
+
 
 router.get('/game', async (req, res, next) => {
   const user = req.session.currentUser;
@@ -88,11 +96,22 @@ router.get('/game', async (req, res, next) => {
   })
 
   router.get('/winner', (req,res,next) => {
+    console.log('hola?')
     res.render('winner')
   })
   router.get('/loser', (req,res,next) => {
     res.render('loser')
   })
+
+  router.post('/winner', (req,res,next) => {
+    console.log('win')
+  })
+  router.post('/loser', (req,res,next) => {
+    console.log('loser')
+
+  })
+
+  /*
   
   router.post('/game/:className', async (req, res, next) => {
     const {className} = req.params
@@ -104,7 +123,7 @@ router.get('/game', async (req, res, next) => {
     }
   })
 
-
+*/
 
 
 module.exports = router;
