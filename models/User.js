@@ -6,7 +6,7 @@ const userSchema = new Schema({
   mail: {type:String, unique:true, required:true},
   password: {type:String, unique: true, required:true},
   animal: {type: Schema.Types.ObjectId, ref: 'Animal'},
-  image: { type:String, default: "https://image.freepik.com/vector-gratis/simbolo-lana-alpaca-vector-icon-logo-template_26350-2.jpg"}
+  image: { type:String, default: "/images/profile.jpeg"}
 
 }, {
   timestamps: { createdAt: "createdAt", updatedAt: 

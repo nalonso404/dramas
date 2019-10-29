@@ -1,9 +1,8 @@
-<h1>Create your animal! bla bla bla</h1>
-
-<form action="/animal/create" method="POST" id="form2">
-    <h2>Create your animal</h2>
-
-    <label for="name">Name</label>
+<body id="ocho">
+<h1 class="login" >Create <br>your <br>animal</h2>
+<div class="form-wrapper">
+<form action="/animal/create" method="POST" id="form">
+    <label  for="name">Name</label>
     <input type="text" name="name" >
 
      <label for="type">Type</label>
@@ -17,5 +16,13 @@
     <div class="error-message">{{ errorMessage }}</div>
     {{/if}}
 
-    <button>CREATE ANIMAL</button>
+    <button class="btn3">CREATE</button>
 </form>
+
+
+
+</div>
+
+
+</body>
+

@@ -8,7 +8,9 @@ const animalSchema = new Schema({
   phrase: {type:String, required:true},
   attitude: {type:String, default:"agressive"},
   attack: {type: Number, default:100},
-  life: {type: Number, default:100}
+  life: {type: Number, default:100},
+  image: { type:String, default: "/images/llama-profile.png"}
+
 }, {
   timestamps: { createdAt: "createdAt", updatedAt: 
 "updatedAt" }

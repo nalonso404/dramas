@@ -1,21 +1,42 @@
-<h1>lele</h1>
-<div>
-<p>{{enemy.name}}</p>
-<p>{{enemy.animal.name}}</p>
+<body id="game">
+<div class="enemy">   
+ <div class="enemy-details">
+    <p>{{enemy.animal.phrase}}</p>
+ <div class="info">
+<p>{{enemy.name}} | {{enemy.animal.name}} </p>
+<p></p>
+ </div>    
+ </div>   
+<img class="enemy-llama" src="/images/enemy-llama-01.png">
+</div>
+
+<div class="user">   
+ <img class="user-llama" src="/images/user-llama-01-01.png">
+ <div class="user-details">
+    <p>{{user.animal.phrase}}</p>
+ <div class="info">
+<p>{{user.name}} | {{user.animal.name}} </p>
+<p></p>
+ </div>    
+ </div>   
+</div>
+
+
+<p class="doyou">DO YOU ACCEPT <br>THE CHALLENGE?</p>
+<div class="pregunta">
+<p> {{pregunta}} </p>
+</div>
+<div class="flex">
+<div class="respuesta-correcta respuesta"> <button class="home-btn">{{answer1}} </button> </div>
+<div class="respuesta-incorrecta respuesta"> <button class="home-btn"> {{answer2}} </button></div>
+
 </div>
 
 
 
-<p> {{pregunta}} </p>
-<div class="respuesta-correcta respuesta"> {{answer1}} </div>
-<div class="respuesta-incorrecta respuesta"> {{answer2}} </div>
-
-
-
-
-<p>{{user.name}}</p>
-<p>{{user.animal.name}}</p>
-
-
 
 <script src="/javascripts/game.js"></script>
+
+</body>
+
+

@@ -16,35 +16,52 @@
       
       <h2 class="animal"> YOUR ANIMAL</h2>
 
-       <div class="butons-animal">
+   
              
-   <a href="/animal/create"class="home-btn">CREATE </a>
+   
+   {{#if animal}}
     <a href="/animal/edit"class="home-btn">EDIT</a>
-    </div>
 
    <div class="totdelete">
        <form action="/animal/delete/{{animal._id}}" method="POST"class="dlt">
-    <button class ="animal-delete-btn"type="submit">DELETE</button>
+          <div class="invisible"></div>
+      <button class ="animal-delete-btn"type="submit">DELETE</button>
     </form>
-      <div class="gracia"><p>Are you sure you want to delete your animal? <br>
-   <em>if you are testing CRUD, GO AHEAD</em>
-   </p></div>
-     
+   
+   <div class="delete-message off">
+      <div class="gracia">
+         <p>Are you sure you want to delete your animal? <br>
+            <em>if you are testing CRUD,<br> GO AHEAD</em>
+        </p>
+      </div>
+   </div>
+    <div class="profile">
+    <img src={{animal.image}} class="profile-img">
+    </div>
+
+   {{else}}
+   <a href="/animal/create"class="home-btn">CREATE </a>
+     {{/if}}
    </div>
    
- 
-      <label for="name">Name</label>
-      <input type="text" name="name" value="{{animal.name}}">
-      <label for="phrase">Phrase</label>
-      <input type="text" name="phrase" value="{{animal.phrase}}">
-      <label for="type">Type</label>
-      <input type="text" name="type" value="{{animal.type}}">
-      <label for="attitude">Attitude</label>
-      <input type="text" name="attitude" value="{{animal.attitude}}">
-      <label for="life">Life</label>
-      <input type="text" name="life" value="{{animal.life}}">
-      <label for="attack">Attack</label>
-      <input type="text" name="attack" value="{{animal.attack}}">
+
+    <div class="form-wrapper">
+       <form id="form">
+      <label class="profile-form" for="name">Name</label >
+      <p class="profile-input">{{animal.name}}</p>
+      <label class="profile-form" for="phrase">Phrase</label >
+      <p class="profile-input" >{{animal.phrase}}</p>
+      <label class="profile-form" for="type">Type</label >
+      <p class="profile-input"> {{animal.type}} </p>
+      <label class="profile-form" for="attitude">Attitude</label >
+      <p class="profile-input">{{animal.attitude}}</p>
+      <label class="profile-form" for="life">Life</label >
+      <p class="profile-input">{{animal.life}}</p>
+      <label class="profile-form" for="attack">Attack</label>
+      <p class="profile-input"> {{animal.attack}} </p>
+       </form>
+      
+    </div>
    </div>    
  
 
@@ -57,6 +74,7 @@
 
 </div>
 
+<script src="/javascripts/gracia.js"></script>
 
 
 </body>

@@ -117,9 +117,12 @@ router.get('/game', async (req, res, next) => {
 
   router.post('/winner', (req,res,next) => {
     console.log('win')
+    //cosas 
+    res.send({})
   })
   router.post('/loser', (req,res,next) => {
     console.log('loser')
+    res.send({})
 
   })
 

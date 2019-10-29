@@ -1,31 +1,35 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </head>
-  <div class="container">
-</div>
+​
+<head>
+  <title>{{title}}</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="icon" type="image/png" href="/images/llamafornite.jpg">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<div class="button_container" id="toggle">
-  <span class="top"></span>
-  <span class="middle"></span>
-  <span class="bottom"></span>
-</div>
-
-<div class="overlay" id="overlay">
-  <nav class="overlay-menu">
-    <ul>
-      <li ><a href="/index">Home</a></li>
-      <li><a href="/signup">Sign up</a></li>
-      <li><a href="/login">Log in</a></li>
-      <li><a href="/logout">Log out</a></li>
-    </ul>
-  </nav>
-</div>
-
-    {{{body}}}
-    
+​
+  
+</head>
+<header>
+  <nav class="navbar">
+    <span class="nav-home">
+      <a href="/index">Home</a>
+​
+    </span>
+    <span class="nav-user">
+      {{#if user.userName}}
+      <a href="">Log out</a>
+      {{else}}
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Log in</a>
+​
+      {{/if}}
+    </span>
+</header>
+</nav>
+​
+{{{body}}}
+​
 </html>
