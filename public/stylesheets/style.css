@@ -7,6 +7,7 @@
 
 html {
   height: 100%;
+
 }
 
 body {
@@ -19,6 +20,7 @@ body {
 
 /* NAV BAR*/
 .navbar {
+  z-index: 100;
   overflow: hidden;
   background-color: #f2f2f2;
   top: 0;
@@ -475,16 +477,21 @@ label {
 .enemy-details {
   margin-top: 83px;
   margin-left: 258px;
+  margin-bottom: 50px;
   font-weight: 400;
   font-size: 30px;
   color: #7139be;
-  margin-bottom: 50px;
   height: fit-content;
+  transform: translateY(-1200px);
+  animation: entrafrasenemy 2s ease 3s forwards;
+
 }
 
 .enemy-llama {
   width: 70%;
   justify-content: flex-end;
+  animation: entrallamaenemy 1s ease 2s forwards;
+
 }
 
 .box3 {
@@ -542,20 +549,24 @@ label {
 
 .user-details {
   margin-right: 180px;
+  transform: translateY(1200px);
   font-weight: 400;
   font-size: 30px;
   color: #7139be;
   margin-bottom: 50px;
   height: fit-content;
+  animation: entrafraseuser 2s ease 3s forwards;
 }
 
 .user-llama {
   width: 40%;
   justify-content: flex-end;
   margin-top: -340px;
-  transform: scale(1.5);
   margin-left: -202px;
+  transform: scale(1.5);
   z-index: -2;
+  animation: entrallamauser 1s ease 2s;
+
 
 }
 
@@ -575,7 +586,7 @@ label {
   padding: 30px;
   text-align: center;
   border-radius: 22px;
-  ;
+
 }
 
 .flex {
@@ -586,6 +597,15 @@ label {
   margin-top: 30px;
   width: 80%;
 
+}
+
+.scroll {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
 }
 
 #game {
@@ -609,6 +629,9 @@ label {
   width: 80%;
   height: auto;
   margin: 0 auto;
+  transform: translateY(1200px);
+  animation: entrapregunta 2s ease 4s forwards;
+
 }
 
 .accordion-item {
@@ -851,4 +874,62 @@ h2 {
   100% {
     transform: translateX(-1278px)
   }
+}
+
+@keyframes entrallamaenemy {
+  0% {
+    transform: translateX(1200px)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+
+}
+
+@keyframes entrallamauser {
+  0% {
+    transform: translateX(-1200px) scale(1.5);
+
+  }
+
+  100% {
+    transform: translateX(0px) scale(1.5);
+
+  }
+
+}
+
+@keyframes entrafrasenemy {
+  0% {
+    transform: translateY(-1200px);
+  }
+
+  100% {
+    transform: translateY(0px);
+
+  }
+}
+
+@keyframes entrafraseuser {
+  0% {
+    transform: translateY(1200px);
+  }
+
+  100% {
+    transform: translateY(0px);
+
+  }
+}
+
+@keyframes entrapregunta {
+  0% {
+    transform: translateY(1200px);
+  }
+
+  100% {
+    transform: translateY(0px);
+
+  }
+
 }
