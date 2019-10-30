@@ -1,42 +1,41 @@
 <body id="game">
-<div class="enemy">   
- <div class="enemy-details">
-    <p>{{enemy.animal.phrase}}</p>
- <div class="info">
-<p>{{enemy.name}} | {{enemy.animal.name}} </p>
-<p></p>
- </div>    
- </div>   
-<img class="enemy-llama" src="/images/enemy-llama-01.png">
-</div>
+   <h2>Round 1</h2>
+   <h2> {{enemy.name}} vs {{user.name}} </h2>
+   <div class="enemy">
+      <div class="enemy-details">
+         <div class="box3 sb13">
+            <p>{{enemy.animal.phrase}}</p>
 
-<div class="user">   
- <img class="user-llama" src="/images/user-llama-01-01.png">
- <div class="user-details">
-    <p>{{user.animal.phrase}}</p>
- <div class="info">
-<p>{{user.name}} | {{user.animal.name}} </p>
-<p></p>
- </div>    
- </div>   
-</div>
+         </div>
+      </div>
+      <img class="enemy-llama" src="/images/enemy-llama-01.png">
+   </div>
+
+   <div class="user">
+      <img class="user-llama" src="/images/user-llama-01-01.png">
+      <div class="user-details">
+         <div class="box3 sb14">
+            <p>{{user.animal.phrase}}</p>
+         </div>
+      </div>
+   </div>
+
+   <div class="accordion">
+      <div class="accordion-item">
+         <h3 class="accordion-item__title">{{pregunta}}</h3>
+         <div class="accordion-item__content">
+            <div class="accordion-item__content-inside">
+               <div class="flex">
+                  <div class="respuesta-correcta respuesta"> <button class="btn-resp">{{answer1}} </button> </div>
+                  <div class="respuesta-incorrecta respuesta"> <button class="btn-resp"> {{answer2}} </button></div>
+               </div>
+            </div>
+         </div>
+      </div>
 
 
-<p class="doyou">DO YOU ACCEPT <br>THE CHALLENGE?</p>
-<div class="pregunta">
-<p> {{pregunta}} </p>
-</div>
-<div class="flex">
-<div class="respuesta-correcta respuesta"> <button class="home-btn">{{answer1}} </button> </div>
-<div class="respuesta-incorrecta respuesta"> <button class="home-btn"> {{answer2}} </button></div>
 
-</div>
-
-
-
-
-<script src="/javascripts/game.js"></script>
+      <script src="/javascripts/game.js"></script>
+      <script src="/javascripts/toggle.js"></script>
 
 </body>
-
-

@@ -28,12 +28,15 @@ router.use((req, res, next) => {
 // session de currentUser
    
  router.get('/secret', (req,res,next)=>{
-   res.render('secret')
+   const user = req.session.currentUser
+   const data = {
+     currentUser:user
+   }
+   res.render('secret', data)
  })
 router.get('/profile', async (req,res,next)=>{
   const user = req.session.currentUser;
   const userWithAnimal = await User.findOne({'_id':user._id}).populate('animal');
-
 console.log(userWithAnimal)
 res.render("profile", userWithAnimal)
 }) 

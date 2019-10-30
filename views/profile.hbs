@@ -1,80 +1,81 @@
+{{>navbar}}
+
 <body id="cuatro">
-<div id="container">
-    <h1>Hello {{name}}!!</h2>
-    <div class="profile">
-    <img src={{image}} class="profile-img">
-    <div class="details">
-      
-        <p>{{name}}</p>
-       <p>{{mail}}</p> 
+   <div id="container">
+      <h1 class="profile-text">Hello!!</h2>
 
-    </div>
-    
-        <a href="/users/edit"class="home-btn">EDIT</a>
-     
-   <div class="form-wrapper">
-      
-      <h2 class="animal"> YOUR ANIMAL</h2>
+         <div class="profile">
+            <div class="container-user">
+               <div class="overlay">
+                  <div class="items"></div>
+                  <div class="items head">
+                     <p>{{name}}</p>
+                     <p> {{mail}}<p>
+                  </div>
+               </div>
+            </div>
 
-   
-             
-   
-   {{#if animal}}
-    <a href="/animal/edit"class="home-btn">EDIT</a>
+         </div>
 
-   <div class="totdelete">
-       <form action="/animal/delete/{{animal._id}}" method="POST"class="dlt">
-          <div class="invisible"></div>
-      <button class ="animal-delete-btn"type="submit">DELETE</button>
-    </form>
-   
-   <div class="delete-message off">
-      <div class="gracia">
-         <p>Are you sure you want to delete your animal? <br>
-            <em>if you are testing CRUD,<br> GO AHEAD</em>
-        </p>
-      </div>
-   </div>
-    <div class="profile">
-    <img src={{animal.image}} class="profile-img">
-    </div>
+         <a href="/users/edit" class="profile-btn">EDIT</a>
 
-   {{else}}
-   <a href="/animal/create"class="home-btn">CREATE </a>
-     {{/if}}
-   </div>
-   
+         <div class="form-wrapper">
 
-    <div class="form-wrapper">
-       <form id="form">
-      <label class="profile-form" for="name">Name</label >
-      <p class="profile-input">{{animal.name}}</p>
-      <label class="profile-form" for="phrase">Phrase</label >
-      <p class="profile-input" >{{animal.phrase}}</p>
-      <label class="profile-form" for="type">Type</label >
-      <p class="profile-input"> {{animal.type}} </p>
-      <label class="profile-form" for="attitude">Attitude</label >
-      <p class="profile-input">{{animal.attitude}}</p>
-      <label class="profile-form" for="life">Life</label >
-      <p class="profile-input">{{animal.life}}</p>
-      <label class="profile-form" for="attack">Attack</label>
-      <p class="profile-input"> {{animal.attack}} </p>
-       </form>
-      
-    </div>
-   </div>    
- 
+            <h2 class="animal"> YOUR ANIMAL</h2>
 
 
-   
-</div>
-<div class="navegadores">
-<a href="/users/secret" class="home-btn"> HOME</a>
-<a href="/logout"class="home-btn">LOGOUT</a>
 
-</div>
 
-<script src="/javascripts/gracia.js"></script>
+            {{#if animal}}
+
+            <div class="container">
+               <div class="overlay">
+                  <div class="items"></div>
+                  <div class="items head">
+                     <p>{{animal.name}}</p>
+                     <p> {{animal.phrase}}<p>
+                  </div>
+                  <div class="items-price">
+                     <p class="new">type: {{animal.type}}</p>
+                     <p class="new">attitude: {{animal.attitude}}</p>
+                  </div>
+                  <div class="items cart">
+                     <span>life {{animal.life}}</span>
+                     <span>attack {{animal.attack}}</span>
+                  </div>
+               </div>
+            </div>
+
+            <div class="navegadores">
+               <a href="/animal/edit" class="profile-btn"> EDIT</a>
+
+               <div class="totdelete">
+                  <form action="/animal/delete/{{animal._id}}" method="POST" class="dlt">
+                     <div class="invisible"></div>
+                     <button class="animal-delete-btn" type="submit">DELETE</button>
+                  </form>
+               </div>
+               <div class="delete-message off">
+                  <div class="gracia">
+                     <p>Are you sure you want to delete your animal? <br>
+                        <em>if you are testing CRUD,<br> GO AHEAD</em>
+                     </p>
+                  </div>
+               </div>
+
+
+               {{else}}
+               <a href="/animal/create" class="profile-btn">CREATE </a>
+               {{/if}}
+            </div>
+
+
+
+
+
+         </div>
+
+         <script src="/javascripts/gracia.js"></script>
 
 
 </body>
