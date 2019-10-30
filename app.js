@@ -20,7 +20,7 @@ const animalRouter = require('./routes/animal');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/dramas-project', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   useNewUrlParser: true,
   reconnectTries: Number.MAX_VALUE
@@ -49,7 +49,9 @@ hbsutils.registerWatchedPartials(path.join(__dirname, "/views/partials"));
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
