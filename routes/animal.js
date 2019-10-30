@@ -21,33 +21,40 @@ router.post('/create', async function (req, res, next) {
     } = req.body;
     const user = req.session.currentUser._id;
     // validamos si los valores de los inputs llegan vacíos
-
-    if (name === "" || phrase === "") {
+    if (name === "" || phrase === "" || attitude === "") {
       res.render("animal/createanimal", {
         errorMessage: "Indicate a name, phrase and an attitude to create your animal"
       });
       return;
     }
     //busco en la BD si existe el animal
-
     const animalExist = await Animal.findOne({
       name
     })
-
     if (animalExist) {
       res.render("animal/createanimal", {
         errorMessage: "The name already exists!"
       });
       return;
     }
-
-    const createdAnimal = await Animal.create({
+    let life, attack;
+    if (attitude === "pacific") {
+      life = 200;
+      attack = 50;
+    } else {
+      life = 100;
+      attack = 100;
+    }
+    const newAnimal = {
       user,
       name,
       type,
       phrase,
-      attitude
-    })
+      attitude,
+      life,
+      attack,
+    }
+    const createdAnimal = await Animal.create(newAnimal)
     const userUpdated = await User.findOneAndUpdate({
       '_id': user
     }, {
@@ -56,10 +63,8 @@ router.post('/create', async function (req, res, next) {
       new: true
     })
     console.log(userUpdated);
-
     // actualizamos la sesión
     req.session.currentUser = userUpdated
-
     res.redirect("/users/profile");
   } catch (error) {
     next(error);
@@ -82,26 +87,33 @@ router.post('/edit', async (req, res, next) => {
   const animalId = req.session.currentUser.animal;
   const {
     name,
-    type,
     phrase,
     attitude
   } = req.body;
+  let life, attack;
+  if (attitude === "pacific") {
+    life = 200;
+    attack = 50;
+  } else {
+    life = 100;
+    attack = 100;
+  }
   const animalUpdated = await Animal.findOneAndUpdate({
     _id: animalId
   }, {
     $set: {
       name,
-      type,
       phrase,
-      attitude
+      attitude,
+      life,
+      attack
     }
   }, {
     new: true
   })
-  console.log(animalUpdated);
+  //console.log(animalUpdated);
   res.redirect("/users/profile");
 })
-
 
 router.post('/delete/:id', async (req, res, next) => {
   const animalId = req.params.id

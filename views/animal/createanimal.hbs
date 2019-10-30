@@ -1,28 +1,30 @@
 <body id="ocho">
-<h1 class="login" >Create <br>your <br>animal</h2>
-<div class="form-wrapper">
-<form action="/animal/create" method="POST" id="form">
-    <label  for="name">Name</label>
-    <input type="text" name="name" >
+    <h1 class="login">Create <br>your <br>animal</h2>
+        <div class="form-wrapper">
+            <form action="/animal/create" method="POST" id="form">
+                <label for="name">Name</label>
+                <input type="text" name="name">
 
-     <label for="type">Type</label>
-    <input type="text" name="type" disabled >
+                <label for="type">Type</label>
+                <input type="text" name="type" disabled>
 
-     <label for="phrase">Introduce your phrase</label>
-    <input type="text" name="phrase">
+                <label for="phrase">Introduce your phrase</label>
+                <input type="text" name="phrase">
 
-     <label for="attitude">Attitude</label>
-    <input type="text" name="attitude" disabled> {{#if errorMessage }}
-    <div class="error-message">{{ errorMessage }}</div>
-    {{/if}}
+                <label for="attitude">Attitude</label>
+                <select name="attitude">
+                    <option value="agresive">Agresive</option>
+                    <option value="pacific">Pacific</option>
+                </select> {{#if errorMessage }}
+                <div class="error-message">{{ errorMessage }}</div>
+                {{/if}}
 
-    <button class="btn3">CREATE</button>
-</form>
+                <button class="btn3">CREATE</button>
+            </form>
 
 
 
-</div>
+        </div>
 
 
 </body>
-

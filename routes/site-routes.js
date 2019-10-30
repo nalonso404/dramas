@@ -4,6 +4,7 @@ const router = express.Router();
 const Animal = require("../models/Animal");
 const User = require("../models/User");
 const Pregunta = require('../models/Pregunta')
+const Game = require("../models/Game");
 
 const uploadCloud = require("../config/cloudinary.js");
 
@@ -43,9 +44,9 @@ router.get('/profile', async (req, res, next) => {
   res.render("profile", userWithAnimal)
 })
 
-/*router.get('/game', (req,res,next)=>{
-  res.render('game')
-})*/
+router.get('/start', (req, res, next) => {
+  res.render('start')
+})
 
 router.get('/edit', (req, res, next) => {
   const userId = req.session.currentUser._id;
@@ -105,8 +106,18 @@ router.post('/edit', async (req,res,next)=>{
 })
  */
 
+/*
+router.get('/start', (req, res, next) => {
+  res.render('start');
+})
+*/
 
-router.get('/game', async (req, res, next) => {
+
+router.get('/game/:id', async (req, res, next) => {
+  const gameId = req.params.id
+
+  const game = await Game.findById(gameId)
+  /*
   const user = req.session.currentUser;
   const userWithAnimal = await User.findOne({
     '_id': user._id
@@ -124,6 +135,7 @@ router.get('/game', async (req, res, next) => {
     answer2
   } = pregunta[0]
   const arrAnswer = [answer1, answer2].sort()
+  
   const data = {
     layout: false,
     user: userWithAnimal,
@@ -133,14 +145,91 @@ router.get('/game', async (req, res, next) => {
     answer2: arrAnswer[1]
   }
   console.log(data)
-
-  res.render('game', data)
+  */
+  console.log(game)
+  res.render('game', game)
 })
+
+
+router.post('/game', async (req, res, next) => {
+  const user = req.session.currentUser;
+  const player = await User.findOne({
+    '_id': user._id
+  }).populate('animal');
+  const enemy = await User.findOne({
+    '_id': {
+      $ne: user._id
+    }
+  }).populate('animal');
+  //console.log(player)
+  //console.log(enemy)
+  const userLife = player.animal.life;
+  const userAttack = player.animal.attack;
+  console.log(userLife)
+  const enemyLife = enemy.animal.life;
+  const enemyAttack = enemy.animal.attack;
+  const pregunta = await Pregunta.find()
+
+  /*
+    console.log(pregunta)
+    const {
+      question,
+      answer1,
+      answer2
+    } = pregunta[0]
+    const arrAnswer = [answer1, answer2].sort()
+  */
+  const newGame = await Game.create({
+    player,
+    enemy,
+    userLife,
+    userAttack,
+    enemyLife,
+    enemyAttack,
+    preguntas: pregunta
+  })
+
+  //console.log(newGame);
+
+  res.redirect('/users/game/' + newGame._id)
+
+})
+
+
+router.post('/correct/:gameId', (req, res, next) => {
+  console.log('lel')
+  res.redirect('/users/winner')
+  /*
+  const gameId = req.params.gameId
+  const enemyNewLife = enemyLife - userAttack;
+  if (enemyNewLife === 0) {
+    res.redirect('/users/winner')
+  } else {
+    round += 1;
+    res.redirect('/game/' + gameId)
+  }*/
+})
+
+router.post('/incorrect/:gameId', (req, res, next) => {
+  res.redirect('/users/loser')
+  /*const gameId = req.params.gameId
+  const userNewLife = enemyAttack - userLife;
+  if (userNewLife === 0) {
+    res.redirect('/users/loser')
+  } else {
+    round += 1;
+    res.redirect('/game/' + gameId)
+
+  }*/
+})
+
+
 
 router.get('/winner', (req, res, next) => {
   console.log('hola?')
   res.render('winner')
 })
+
 router.get('/loser', (req, res, next) => {
   res.render('loser')
 })
@@ -150,6 +239,7 @@ router.post('/winner', (req, res, next) => {
   //cosas 
   res.send({})
 })
+
 router.post('/loser', (req, res, next) => {
   console.log('loser')
   res.send({})

@@ -1,26 +1,28 @@
-
 <body id="siete">
     <div class="form-wrapper">
-          <h1 class="signup">EDIT YOUR ANIMAL</h1>
+        <h1 class="signup">EDIT YOUR ANIMAL</h1>
 
-    <form action="/animal/edit" method="POST" id="form">
-    
-   
-    <label for="name">Name</label>
-    <input type="text" value="{{animal.name}}" name="name" >
+        <form action="/animal/edit" method="POST" id="form">
 
-     <label for="type">Type</label>
-    <input type="text" value="{{animal.type}}" name="type" disabled >
 
-     <label for="phrase">Introduce your phrase</label>
-    <input type="text" value="{{animal.phrase}}"name="phrase">
+            <label for="name">Name</label>
+            <input type="text" value="{{animal.name}}" name="name">
 
-     <label for="attitude">Attitude</label>
-    <input type="text" value="{{animal.attitude}}"name="attitude" disabled>
+            <label for="type">Type</label>
+            <input type="text" value="{{animal.type}}" name="type" disabled>
 
-    <button class="btn2" >EDIT</button>
+            <label for="phrase">Introduce your phrase</label>
+            <input type="text" value="{{animal.phrase}}" name="phrase">
 
-</form>
+            <label for="attitude">Attitude</label>
+            <select value="{{animal.attitude}}" name="attitude">
+                <option value="agresive">Agresive</option>
+                <option value="pacific">Pacific</option>
+            </select>
+
+            <button class="btn2">EDIT</button>
+
+        </form>
 
 
 
@@ -28,5 +30,3 @@
 
 
 </body>
-
-

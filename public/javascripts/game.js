@@ -1,5 +1,3 @@
-
-
 /* function pregunta (event){
    const respuestas =  document.querySelectorAll('.respuesta')
    console.log(respuestas)
@@ -25,7 +23,7 @@
     });
 } */
 
-
+/*
 function game(){
     const respuestaCorrecta= document.querySelector('.respuesta-correcta')
     console.log(respuestaCorrecta);
@@ -51,5 +49,5 @@ function game(){
 
 game();
 
-
+*/
 //var elementClasses = elementNodeReference.classList;
