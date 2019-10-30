@@ -1,37 +1,52 @@
 <body id="game">
-   <h2>Round 1</h2>
-   <h2> {{enemy.name}} vs {{user.name}} </h2>
-   <div class="enemy">
-      <div class="enemy-details">
-         <div class="box3 sb13">
-            <p>{{enemy.animal.phrase}}</p>
 
-         </div>
+   <div class="animacion">
+      <div class="white">
+         <h1>Round 1 </h1>
+         <h2> {{enemy.name}} vs {{user.name}} </h2>
       </div>
-      <img class="enemy-llama" src="/images/enemy-llama-01.png">
-   </div>
 
-   <div class="user">
-      <img class="user-llama" src="/images/user-llama-01-01.png">
-      <div class="user-details">
-         <div class="box3 sb14">
-            <p>{{user.animal.phrase}}</p>
+   </div>
+   <div class="cont-game">
+
+      <div class="enemy">
+         <div class="enemy-details">
+            <div class="box3 sb13">
+               <p>{{enemy.animal.phrase}}</p>
+
+            </div>
          </div>
+         <img class="enemy-llama" src="/images/enemy-llama-01.png">
       </div>
-   </div>
 
-   <div class="accordion">
-      <div class="accordion-item">
-         <h3 class="accordion-item__title">{{pregunta}}</h3>
-         <div class="accordion-item__content">
-            <div class="accordion-item__content-inside">
-               <div class="flex">
-                  <div class="respuesta-correcta respuesta"> <button class="btn-resp">{{answer1}} </button> </div>
-                  <div class="respuesta-incorrecta respuesta"> <button class="btn-resp"> {{answer2}} </button></div>
-               </div>
+      <div class="user">
+         <img class="user-llama" src="/images/user-llama-01-01.png">
+         <div class="user-details">
+            <div class="box3 sb14">
+               <p>{{user.animal.phrase}}</p>
             </div>
          </div>
       </div>
+
+      <div class="accordion">
+         <div class="accordion-item">
+            <h3 class="accordion-item__title">{{pregunta}}</h3>
+            <div class="accordion-item__content">
+               <div class="accordion-item__content-inside">
+                  <div class="flex">
+                     <div class="respuesta-correcta respuesta"> <button class="btn-resp">{{answer1}} </button> </div>
+                     <div class="respuesta-incorrecta respuesta"> <button class="btn-resp"> {{answer2}} </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+
+
+      </div>
+
 
 
 
