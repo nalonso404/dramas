@@ -1,5 +1,3 @@
-
-
 /* function pregunta (event){
    const respuestas =  document.querySelectorAll('.respuesta')
    console.log(respuestas)
@@ -26,25 +24,25 @@
 } */
 
 
-function game(){
-    const respuestaCorrecta= document.querySelector('.respuesta-correcta')
+function game() {
+    const respuestaCorrecta = document.querySelector('.respuesta-correcta')
     console.log(respuestaCorrecta);
-    respuestaCorrecta.addEventListener('click', async function(){
+    respuestaCorrecta.addEventListener('click', async function () {
         await axios.post('/users/winner');
-        setTimeout(function(){
+        setTimeout(function () {
             window.location.href = '/users/winner'
-        }, 5000);
-        
+        }, 2000);
+
     })
-    
-    const respuestaIncorrecta= document.querySelector('.respuesta-incorrecta')
+
+    const respuestaIncorrecta = document.querySelector('.respuesta-incorrecta')
     console.log(respuestaIncorrecta);
-    respuestaIncorrecta.addEventListener('click', async function(){
+    respuestaIncorrecta.addEventListener('click', async function () {
         await axios.post('/users/loser');
-        setTimeout(function(){
+        setTimeout(function () {
             window.location.href = '/users/loser'
-        }, 5000);
-        
+        }, 2000);
+
     })
 
 }
