@@ -7,6 +7,10 @@ const bcrypt = require("bcryptjs");
 const bcryptSalt = 10;
 
 
+router.get('/', function (req, res, next) {
+  res.render('home');
+});
+
 /* GET users listing. */
 router.get('/signup', function (req, res, next) {
 

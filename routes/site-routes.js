@@ -8,12 +8,6 @@ const Pregunta = require('../models/Pregunta')
 const uploadCloud = require("../config/cloudinary.js");
 
 
-//renderiz ala plantilla home.hbs
-router.get("/", (req, res, next) => {
-  res.render("home");
-});
-
-
 // verificamiso si el usuario tiene una session activa, de ser asi, lo redirigimos a la siguiente ruta
 // en este caso, /secret, en caso contrario redirigimos al usuario a /login
 router.use((req, res, next) => {
