@@ -3,26 +3,29 @@
 ## Description
 
 Página/aplicación donde un usuario se puede registrar, logear y editar su información de perfil.
-El usuario podrá crear un anima, con unas características predefinidas y otras editables y también podrá borrar su animal.
+El usuario podrá crear un animal (llama), con unas características predefinidas y otras editables y también podrá borrar su animal.
 Finalmente el usuario se enfrentará a una batalla con el animal de otro usuario.
 
 ## MVP
 
->>routas, 
-home pública, sign up y login
-Sign up, formulario para creación de usuario
-Log in, find de DB
-User/:id, Información de perfil del User
-User/:id/edit, Edición de la información del perfil
-animal/create,  Creación de animal
-animal/:id/edit,  Edicion del animal
-animal/:id/delete, borrar animal
-home privada, Home visible para usuarios logrados
-game/:id, Interacción con el juego
-game/:id/winner, pagina resultado
-game/:id/loser , pagina resultado
+## Routes
+| Path |  | Permissions | Behavior |
+| - | - | - | - |
+| `/login` | LoginPage | public | Log in page |
+| `/signup` | SignupPage | public | Sign up page |
+| `/not-found` | NotFoundPage | public | Not found page |
+| `/` | HomePage | user only | Home page |
+| `User/:id` |  | user only | Información de perfil del User |
+| `User/:id/edit` | | user only | Edición de la información del perfil |
+| `animal/create` |  | user only | Creación del animal |
+| `animal/:id/edit` | | user only | Edicion del animal |
+| `animal/:id/delete` |  | user only | Borras tu animal |
+| `game/:id` |  | user only | Interacción con el juego |
+| `game/:id/winner` | | user only | Página resultado |
+| `game/:id/loser` | | user only | Página resultado |
 
->>Modelos:
+
+## Modelos:
 Usuario
 Animal
 Pregunta
